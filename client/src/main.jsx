@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import HomePage from './pages/HomePage.jsx'
 import App from './App';
 import { 
   Route, 
@@ -8,10 +7,14 @@ import {
   createBrowserRouter, 
   createRoutesFromElements } from 'react-router-dom';
 
+import HomePage from './pages/HomePage.jsx'
+import RegisterPage from './pages/RegisterPage.jsx';
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App/>}>
       <Route index element={<HomePage/>}/>
+      <Route path="/register" element={<RegisterPage/>}/>
     </Route>
   )
 )
