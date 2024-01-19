@@ -1,0 +1,20 @@
+.home-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.blog-post {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.blog-post h2 {
+    margin-bottom: 10px;
+}
+
+.post-date {
+    font-style: italic;
+    color: #888;
+}
