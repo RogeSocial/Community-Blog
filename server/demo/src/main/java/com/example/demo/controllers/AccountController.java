@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.example.demo.dtos.CreateAccountDto;
 import com.example.demo.dtos.LoginDto;
@@ -34,6 +35,7 @@ public class AccountController {
 
     // Create an account
     @PostMapping("/account/register")
+    @CrossOrigin(origins = "http://localhost:5173") 
     public ResponseEntity<String> addAccount(@RequestBody CreateAccountDto accountDto) {
         accountService.createAccount(accountDto);
         return ResponseEntity.ok("account added: " + accountDto.getName());
@@ -41,6 +43,7 @@ public class AccountController {
 
     // Login
     @PostMapping("/account/login")
+    @CrossOrigin(origins = "http://localhost:5173")
     public ResponseEntity<String> login(@RequestBody LoginDto accountDto) {
         return ResponseEntity.ok(accountService.login(accountDto.getEmail(), accountDto.getPassword()));
     }

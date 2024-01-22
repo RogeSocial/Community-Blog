@@ -8,7 +8,7 @@ function Navbar() {
         <input type="text" className="nav-search" placeholder="Search Rabbit" />
         <div className="nav-links">
             <a>POST</a>
-            <a>Login</a>
+            <Link to="/login">Login</Link>
             <Link to="/register">Register</Link>
         </div>
     </nav>

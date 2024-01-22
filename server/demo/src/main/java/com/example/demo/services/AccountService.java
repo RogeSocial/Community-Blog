@@ -47,7 +47,7 @@ public class AccountService implements UserDetailsService {
 
                 if (passwordEncoder.verifyPassword(password, account.password, account.getSalt())) {
                     // return a token with id, authority, and name in the payload
-                    return "Generated token: " + JwtTokenUtil.createToken(
+                    return JwtTokenUtil.createToken(
                             String.valueOf(account.getId()),
                             account.getAuthority(),
                             account.getEmail(),
