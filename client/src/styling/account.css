@@ -1,4 +1,4 @@
-.register-container {
+.account-container {
     max-width: 400px;
     margin: auto;
     margin-top: 180px;
@@ -15,7 +15,7 @@
     box-sizing: border-box;
   }
   
-  .register-button {
+  .account-button {
     background-color: #1da1f2;
     color: white;
     padding: 10px 15px;
@@ -24,16 +24,16 @@
     cursor: pointer;
   }
   
-  .register-button:hover {
+  .account-button:hover {
     background-color: #198ad2;
   }
   
-  .login-link {
+  .account-link {
     color: #007bff;
     text-decoration: none;
   }
   
-  .login-link:hover {
+  .account-link:hover {
     text-decoration: underline;
   }
   

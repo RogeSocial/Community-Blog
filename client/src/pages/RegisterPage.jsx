@@ -3,7 +3,7 @@ import '../styling/account.css';
 
 function RegisterPage() {
   return (
-    <div className="register-container">
+    <div className="account-container">
       <h2>Register account</h2>
       <label>
         Full Name:
@@ -25,9 +25,9 @@ function RegisterPage() {
         <input type="password" className="input-field" />
       </label>
       <br />
-      <button className="register-button">Register</button>
+      <button className="account-button">Register</button>
       <p>
-        Already have an account? <Link to="/login" className="login-link">Login here</Link>.
+        Already have an account? <Link to="/login" className="account-link">Login here</Link>.
       </p>
     </div>
   );
