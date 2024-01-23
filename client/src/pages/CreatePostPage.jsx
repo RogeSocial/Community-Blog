@@ -18,7 +18,7 @@ function CreatePostPage({ history }) {
 
             if (response.ok) {
                 // Om inlägget skapas framgångsrikt, navigera till startsidan
-                history.push('/');
+                window.location.href = "/"
             } else {
                 // Hantera fel här om du vill
                 console.error('Error creating post');

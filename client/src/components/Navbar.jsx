@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
 import '../styling/navbar.css';
-import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Navbar({ onSearchChange }) {
-    const [searchQuery, setSearchQuery] = useState('');
-    const handleSearchChange = (e) => {
-        setSearchQuery(e.target.value);
-        onSearchChange(e.target.value);
-    };
+function Navbar() {
 
     return (
         <nav className="navbar">
@@ -17,8 +11,6 @@ function Navbar({ onSearchChange }) {
                 type="text"
                 className="nav-search"
                 placeholder="Search Rabbit"
-                value={searchQuery}
-                onChange={handleSearchChange}
             />
             <div className="nav-links">
                 <Link to="/create-post" className="nav-link">POST</Link>

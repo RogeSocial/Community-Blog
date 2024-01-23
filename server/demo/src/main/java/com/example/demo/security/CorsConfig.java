@@ -14,12 +14,13 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/blog") // Ange stigen för din API
-                        .allowedOrigins("http://localhost:5173") // Ange din frontend-applikations URL
+                registry.addMapping("/api/blog")
+                        .allowedOrigins("http://localhost:5174") // Uppdatera till rätt port för din frontend
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowCredentials(true);
             }
         };
     }
 }
+
 
