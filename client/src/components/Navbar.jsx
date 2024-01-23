@@ -1,18 +1,33 @@
-import "../styling/Navbar.css";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import '../styling/Navbar.css';
+import { useAuth } from '../GlobalContext';
 
 function Navbar() {
+  const { token, logout } = useAuth(); // Use the useAuth hook to get the token and logout function
+
   return (
     <nav className="navbar">
-        <Link to="/"><h1 className="nav-title">Rabbit</h1></Link>
-        <input type="text" className="nav-search" placeholder="Search Rabbit" />
-        <div className="nav-links">
-            <a>POST</a>
+      <Link to="/">
+        <h1 className="nav-title">Rabbit</h1>
+      </Link>
+      <input type="text" className="nav-search" placeholder="Search Rabbit" />
+      <div className="nav-links">
+        <a>POST</a>
+        {token ? (
+          // If the user is logged in, show the "Sign Out" link
+          <button className="sign-out-button" onClick={logout}>
+            Sign Out
+          </button>
+        ) : (
+          // If the user is not logged in, show the "Login" and "Register" links
+          <>
             <Link to="/login">Login</Link>
             <Link to="/register">Register</Link>
-        </div>
+          </>
+        )}
+      </div>
     </nav>
-  )
+  );
 }
 
 export default Navbar;

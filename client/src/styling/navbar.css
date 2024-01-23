@@ -30,6 +30,8 @@ body {
   
   .nav-title {
     margin: 0;
+    color: #fff;
+    text-decoration: none;
   }
   
   .nav-search {
@@ -45,5 +47,12 @@ body {
     color: #fff;
     text-decoration: none;
     margin-right: 10px;
+    cursor: pointer;
+  }
+
+  .sign-out-button {
+    background-color: #333;
+    border: none;
+    color: #fff;
     cursor: pointer;
   }

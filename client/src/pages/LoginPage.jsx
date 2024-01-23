@@ -2,10 +2,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styling/account.css';
+import { useAuth } from '../GlobalContext';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const { login } = useAuth();
 
   const handleLogin = async () => {
     try {
@@ -19,16 +22,13 @@ function LoginPage() {
           password: password,
         }),
       });
-  
+
       const responseData = await response.text();
       console.log(responseData);
-  
+
       if (response.ok) {
-        // Assuming responseData contains the token information
         console.log('Token:', responseData);
-        //Store token in local storage
-        localStorage.setItem('token', responseData);
-        // Redirect to the home page here
+        login(responseData); // Use the login function from the useAuth hook
         window.location.href = '/';
       } else {
         console.error('Login failed');
@@ -36,7 +36,7 @@ function LoginPage() {
     } catch (error) {
       console.error('Error during login:', error);
     }
-  };   
+  };  
 
   return (
     <div className="account-container">
