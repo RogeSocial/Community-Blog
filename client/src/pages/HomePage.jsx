@@ -29,6 +29,13 @@ function HomePage() {
         .catch(error => console.error('Error fetching blog posts', error));
     }, []);
 
+    const lessText = (text, maxLength) => {
+        if (text.length > maxLength) {
+            return text.substring(0, maxLength) + '...';
+        }
+        return text;
+    };
+
     return (
         <div className="home-page">
             {blogPosts.map((post) => (
@@ -36,7 +43,10 @@ function HomePage() {
                     <Link to={`/post/${post.id}`}>
                         <h2>{post.title}</h2>
                     </Link>
-                    <p>{post.content}</p>
+                    <p>{lessText(post.content, 150)}</p>
+                    <Link to={`/post/${post.id}`} className="read-more-link">
+                        Read More
+                    </Link>
                     <p className="post-date">Posted on: {post.date}</p>
                 </div>
             ))}
