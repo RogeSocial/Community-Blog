@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styling/HomePage.css';
 
@@ -7,10 +8,20 @@ const blogPosts = [
     // Add more blog posts as needed
 ];
 
-function HomePage() {
+function HomePage({ searchQuery }) {
+    const [filteredBlogPosts, setFilteredBlogPosts] = useState(blogPosts);
+
+    useEffect(() => {
+        // Filter blog posts based on search query
+        const filteredPosts = blogPosts.filter((post) =>
+            post.title.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        setFilteredBlogPosts(filteredPosts);
+    }, [searchQuery]);
+
     return (
         <div className="home-page">
-            {blogPosts.map((post) => (
+            {filteredBlogPosts.map((post) => (
                 <div key={post.id} className="blog-post">
                     <Link to={`/post/${post.id}`}>
                         <h2>{post.title}</h2>
