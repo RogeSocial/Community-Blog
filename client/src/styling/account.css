@@ -1,0 +1,39 @@
+.account-container {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 180px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0;
+    box-sizing: border-box;
+  }
+  
+  .account-button {
+    background-color: #1da1f2;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .account-button:hover {
+    background-color: #198ad2;
+  }
+  
+  .account-link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .account-link:hover {
+    text-decoration: underline;
+  }
+  
