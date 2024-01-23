@@ -7,12 +7,12 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <Link to="/">
-        <h1 className="nav-title">Rabbit</h1>
+      <Link to="/" className="nav-title">
+        <h1>Rabbit</h1>
       </Link>
       <input type="text" className="nav-search" placeholder="Search Rabbit" />
       <div className="nav-links">
-        <a>POST</a>
+        <Link to="/create-post" className="nav-links">POST</Link>
         {token ? (
           // If the user is logged in, show the "Sign Out" link
           <button className="sign-out-button" onClick={logout}>
@@ -21,8 +21,8 @@ function Navbar() {
         ) : (
           // If the user is not logged in, show the "Login" and "Register" links
           <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link to="/login" className="nav-links">Login</Link>
+            <Link to="/register" className="nav-links">Register</Link>
           </>
         )}
       </div>

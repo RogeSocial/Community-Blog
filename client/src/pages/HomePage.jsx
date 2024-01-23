@@ -1,13 +1,34 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styling/HomePage.css';
 
-const blogPosts = [
-    { id: 1, title: 'Blog Post 1', content: 'Lorem ipsum...', date: '2024-01-19' },
-    { id: 2, title: 'Blog Post 2', content: 'Dolor sit amet...', date: '2024-01-20' },
-    // Add more blog posts as needed
-];
-
 function HomePage() {
+    const [blogPosts, setBlogPosts] = useState([]);
+
+    useEffect(() => {
+        // Hämta blogginlägg från API när komponenten monteras
+        fetch('http://localhost:8080/api/blog', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                // Add any other headers or authentication tokens if required
+            },
+            credentials: 'include', // Include credentials (cookies) in the request
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Sort the blog posts by date in descending order
+            const sortedPosts = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+            setBlogPosts(sortedPosts);
+        })
+        .catch(error => console.error('Error fetching blog posts', error));
+    }, []);
+
     return (
         <div className="home-page">
             {blogPosts.map((post) => (
