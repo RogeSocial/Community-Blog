@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import HomePage from './pages/HomePage.jsx'
+import CreatePostPage from './pages/CreatePostPage';
 import App from './App';
 import { 
   Route, 
@@ -12,6 +13,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App/>}>
       <Route index element={<HomePage/>}/>
+        <Route path="/create-post" element={<CreatePostPage />} />
     </Route>
   )
 )

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import '../styling/navbar.css';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Navbar({ onSearchChange }) {
     const [searchQuery, setSearchQuery] = useState('');
-
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value);
         onSearchChange(e.target.value);
@@ -11,7 +12,7 @@ function Navbar({ onSearchChange }) {
 
     return (
         <nav className="navbar">
-            <h1 className="nav-title">Rabbit</h1>
+            <Link to="/" className="nav-title">Rabbit</Link>
             <input
                 type="text"
                 className="nav-search"
@@ -20,9 +21,9 @@ function Navbar({ onSearchChange }) {
                 onChange={handleSearchChange}
             />
             <div className="nav-links">
-                <a>POST</a>
-                <a>Login</a>
-                <a>Signup</a>
+                <Link to="/create-post" className="nav-link">POST</Link>
+                <Link to="/login" className="nav-link">Login</Link>
+                <Link to="/signup" className="nav-link">Signup</Link>
             </div>
         </nav>
     );

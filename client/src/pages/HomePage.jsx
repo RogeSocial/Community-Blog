@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styling/HomePage.css';
 
-const blogPosts = [
-    { id: 1, title: 'Blog Post 1', content: 'Lorem ipsum...', date: '2024-01-19' },
-    { id: 2, title: 'Blog Post 2', content: 'Dolor sit amet...', date: '2024-01-20' },
-    // Add more blog posts as needed
-];
-
 function HomePage({ searchQuery }) {
-    const [filteredBlogPosts, setFilteredBlogPosts] = useState(blogPosts);
+    const [blogPosts, setBlogPosts] = useState([]);
 
+    useEffect(() => {
+        // Hämta blogginlägg från API när komponenten monteras
+        fetch('http://localhost:8080/api/blog')
+            .then(response => response.json())
+            .then(data => setBlogPosts(data))
+            .catch(error => console.error('Error fetching blog posts', error));
+    }, []);
+    const [filteredBlogPosts, setFilteredBlogPosts] = useState(blogPosts);
     useEffect(() => {
         // Filter blog posts based on search query
         const filteredPosts = blogPosts.filter((post) =>
@@ -18,6 +20,8 @@ function HomePage({ searchQuery }) {
         );
         setFilteredBlogPosts(filteredPosts);
     }, [searchQuery]);
+    
+    
 
     return (
         <div className="home-page">

@@ -10,40 +10,40 @@ body {
     padding: 20px;
     background-color: #333;
     color: #fff;
-}
-
-.nav-left {
+  }
+  
+  .nav-left {
     order: 1;
-}
-
-.nav-center {
+  }
+  
+  .nav-center {
     order: 2;
     flex-grow: 1;
     margin: 0 10px;
-}
-
-.nav-right {
+  }
+  
+  .nav-right {
     order: 3;
     display: flex;
     align-items: center;
-}
-
-.nav-title {
+  }
+  
+  .nav-title {
     margin: 0;
-}
-
-.nav-search {
+  }
+  
+  .nav-search {
     width: 30%;
     padding: 8px;
-}
-
-.create-post {
+  }
+  
+  .create-post {
     margin-right: 10px;
-}
-
-.nav-links a {
+  }
+  
+  .nav-link {
     color: #fff;
     text-decoration: none;
     margin-right: 10px;
     cursor: pointer;
-}
+  }

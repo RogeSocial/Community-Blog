@@ -1,5 +1,7 @@
+import { Outlet } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import CreatePostPage from './pages/CreatePostPage';
 import React, { useState } from 'react';
-import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 
 function App() {
