@@ -1,5 +1,4 @@
 // pages/CreatePostPage.jsx
-
 import React from 'react';
 import CreatePostForm from '../components/CreatePostForm';
 
@@ -30,7 +29,6 @@ function CreatePostPage({ history }) {
 
     return (
         <div className="create-post-page">
-            <h1>Create a New Post</h1>
             <CreatePostForm onCreatePost={handleCreatePost} />
         </div>
     );
