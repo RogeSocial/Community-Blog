@@ -1,6 +1,7 @@
 // components/CreatePostForm.jsx
 
-import React, { useState } from 'react';
+import { useState } from 'react';
+import '../styling/createpost.css';
 
 function CreatePostForm({ onCreatePost }) {
     const [title, setTitle] = useState('');
@@ -18,17 +19,20 @@ function CreatePostForm({ onCreatePost }) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Title:
-                <input type="text" value={title} onChange={handleTitleChange} />
-            </label>
-            <label>
-                Content:
-                <textarea value={content} onChange={handleContentChange} />
-            </label>
-            <button type="submit">Create Post</button>
-        </form>
+        <div className="create-post-container">
+            <form onSubmit={handleSubmit}>
+                <h1>Create a New Post</h1>
+                <label>
+                    Title:
+                    <input type="text" value={title} onChange={handleTitleChange} />
+                </label>
+                <label>
+                    Content:
+                    <textarea className='content-form' value={content} onChange={handleContentChange} />
+                </label>
+                <button type="submit">Create Post</button>
+            </form>
+        </div>
     );
 }
 
