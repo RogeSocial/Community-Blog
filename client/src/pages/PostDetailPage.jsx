@@ -1,7 +1,8 @@
 // PostDetailPage.jsx
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
+import '../styling/postpage.css';
 
 function PostDetailPage() {
     const { postId } = useParams();
@@ -33,9 +34,9 @@ function PostDetailPage() {
 
     return (
         <div className="post-detail-page">
-            <h1>{post.title}</h1>
-            <p>{post.content}</p>
-            <p>Posted on: {post.date}</p>
+            <h1 className='post-title'>{post.title}</h1>
+            <p className='post-content'>{post.content}</p>
+            <p className='post-content'>Posted on: {post.date}</p>
         </div>
     );
 }
