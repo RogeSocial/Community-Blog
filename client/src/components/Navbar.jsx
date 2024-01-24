@@ -26,13 +26,16 @@ function Navbar() {
                 onChange={(e) => handleSearch(e.target.value)}
             />
             <div className="nav-links">
-                <Link to="/create-post" className="nav-links">
-                    POST
-                </Link>
                 {token ? (
-                    <button className="sign-out-button" onClick={logout}>
-                        Sign Out
-                    </button>
+                    <>
+                        <Link to="/create-post" className="nav-links">
+                            POST
+                        </Link>
+
+                        <button className="sign-out-button" onClick={logout}>
+                            Sign Out
+                        </button>
+                    </>
                 ) : (
                     <>
                         <Link to="/login" className="nav-links">
