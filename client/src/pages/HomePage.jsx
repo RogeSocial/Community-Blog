@@ -1,33 +1,36 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import '../styling/HomePage.css';
 
 function HomePage() {
     const [blogPosts, setBlogPosts] = useState([]);
+    const [searchParams] = useSearchParams();
+    const searchQuery = searchParams.get('search') || '';
 
     useEffect(() => {
-        // Hämta blogginlägg från API när komponenten monteras
         fetch('http://localhost:8080/api/blog', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                // Add any other headers or authentication tokens if required
             },
-            credentials: 'include', // Include credentials (cookies) in the request
+            credentials: 'include',
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Sort the blog posts by date in descending order
-            const sortedPosts = data.sort((a, b) => new Date(b.date) - new Date(a.date));
-            setBlogPosts(sortedPosts);
-        })
-        .catch(error => console.error('Error fetching blog posts', error));
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                const sortedPosts = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+                setBlogPosts(sortedPosts);
+            })
+            .catch((error) => console.error('Error fetching blog posts', error));
     }, []);
+
+    const filteredPosts = blogPosts
+        .filter((post) => post.title.toLowerCase().includes(searchQuery.toLowerCase()))
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
 
     const lessText = (text, maxLength) => {
         if (text.length > maxLength) {
@@ -38,7 +41,7 @@ function HomePage() {
 
     return (
         <div className="home-page">
-            {blogPosts.map((post) => (
+            {filteredPosts.map((post) => (
                 <div key={post.id} className="blog-post">
                     <Link to={`/api/blog/${post.id}`}>
                         <h2>{post.title}</h2>
@@ -51,7 +54,8 @@ function HomePage() {
                 </div>
             ))}
         </div>
-    );
+    )
+
 }
 
 export default HomePage;
