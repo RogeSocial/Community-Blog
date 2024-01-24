@@ -32,6 +32,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/account/**").permitAll()
                         .requestMatchers("/api/blog").permitAll()
+                        .requestMatchers("/post/**").permitAll()
 
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())

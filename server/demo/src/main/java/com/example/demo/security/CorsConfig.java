@@ -22,6 +22,11 @@ public class CorsConfig {
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowCredentials(true);
 
+                registry.addMapping("/post/**")
+                        .allowedOrigins("http://localhost:5173") // Update to the correct port for your frontend
+                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+                        .allowCredentials(true);
+
                 // Configuration for "/account/**"
                 registry.addMapping("/account/**")
                         .allowedOrigins("http://localhost:5173") // Allow requests from this origin
