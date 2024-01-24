@@ -29,7 +29,8 @@ function LoginPage() {
       if (response.ok) {
         if (responseData !== 'email/user not found' && responseData !== 'wrong password') {
           console.log('Token:', responseData);
-          login(responseData); // Use the login function from the useAuth hook
+          login(responseData); 
+          window.location.href = '/';
         } else {
           console.error('Login failed:', responseData);
         }
