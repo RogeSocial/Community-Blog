@@ -5,10 +5,12 @@ package com.example.demo.controllers;
 import com.example.demo.models.BlogPost;
 import com.example.demo.repositories.BlogPostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/blog")
@@ -21,6 +23,20 @@ public class BlogController {
     @GetMapping
     public List<BlogPost> getAllBlogPosts() {
         return blogPostRepository.findAll();
+    }
+    @GetMapping("/{postId}")
+    public ResponseEntity<BlogPost> getBlogPostById(@PathVariable Long postId) {
+        // Retrieve the blog post by ID from the repository
+        Optional<BlogPost> blogPostOptional = blogPostRepository.findById(postId);
+
+        // Check if the blog post exists
+        if (blogPostOptional.isPresent()) {
+            // If found, return the blog post
+            return ResponseEntity.ok(blogPostOptional.get());
+        } else {
+            // If not found, return a 404 response
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping

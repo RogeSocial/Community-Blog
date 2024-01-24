@@ -43,7 +43,7 @@ function HomePage() {
         <div className="home-page">
             {filteredPosts.map((post) => (
                 <div key={post.id} className="blog-post">
-                    <Link to={`/post/${post.id}`}>
+                    <Link to={`/api/blog/${post.id}`}>
                         <h2>{post.title}</h2>
                     </Link>
                     <p>{lessText(post.content, 150)}</p>
