@@ -1,12 +1,16 @@
-import { Outlet } from 'react-router-dom'
-import Navbar from './components/Navbar'
-import CreatePostPage from './pages/CreatePostPage';
+// App.js
 import React, { useState } from 'react';
-import HomePage from './pages/HomePage';
-import { AuthProvider } from './GlobalContext'
-
+import { Outlet, useNavigate } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import { AuthProvider } from './GlobalContext';
 
 function App() {
+    const [searchQuery, setSearchQuery] = useState('');
+    const navigate = useNavigate();
+
+    const handleSearch = (query) => {
+        setSearchQuery(query);
+    };
 
     return (
         <AuthProvider>
