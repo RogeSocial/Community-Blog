@@ -44,14 +44,16 @@ public class AccountService implements UserDetailsService {
             if (account != null) {
                 // Log the username here to check what name is fetched from the account
                 System.out.println("Username retrieved: " + account.getUsername());
-
-                if (passwordEncoder.verifyPassword(password, account.password, account.getSalt())) {
+    
+                if (passwordEncoder.verifyPassword(password, account.getPassword(), account.getSalt())) {
                     // return a token with id, authority, and name in the payload
                     return JwtTokenUtil.createToken(
                             String.valueOf(account.getId()),
                             account.getAuthority(),
                             account.getEmail(),
                             account.getName());
+                } else {
+                    return "wrong password";
                 }
             } else {
                 return "email/user not found";
@@ -60,9 +62,7 @@ public class AccountService implements UserDetailsService {
             e.printStackTrace();
             return "error when getting email";
         }
-        return "wrong password";
     }
-
     public List<Account> getAllAccounts() {
         return accountRepository.findAll();
     }
