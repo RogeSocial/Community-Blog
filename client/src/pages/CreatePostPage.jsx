@@ -3,7 +3,7 @@ import React from 'react';
 import { useAuth } from '../GlobalContext.jsx';
 import CreatePostForm from '../components/CreatePostForm';
 
-function CreatePostPage({ history }) {
+function CreatePostPage() {
     const { token } = useAuth();
 
     const handleCreatePost = async (postData) => {
