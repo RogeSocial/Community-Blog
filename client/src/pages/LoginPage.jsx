@@ -22,21 +22,24 @@ function LoginPage() {
           password: password,
         }),
       });
-
+  
       const responseData = await response.text();
       console.log(responseData);
-
+  
       if (response.ok) {
-        console.log('Token:', responseData);
-        login(responseData); // Use the login function from the useAuth hook
-        window.location.href = '/';
+        if (responseData !== 'User with the provided email not found' && responseData !== 'Invalid email or password') {
+          console.log('Token:', responseData);
+          login(responseData); // Use the login function from the useAuth hook
+        } else {
+          console.error('Login failed:', responseData);
+        }
       } else {
-        console.error('Login failed');
+        console.error('Login failed:', responseData);
       }
     } catch (error) {
       console.error('Error during login:', error);
     }
-  };  
+  };
 
   return (
     <div className="account-container">
