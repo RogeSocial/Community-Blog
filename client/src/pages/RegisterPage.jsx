@@ -17,6 +17,25 @@ function RegisterPage() {
       return;
     }
   
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      console.error('Please enter a valid email address.');
+      return;
+    }
+  
+    // Validate password length
+    if (password.length < 8) {
+      console.error('Password must be at least 8 characters long.');
+      return;
+    }
+  
+    // Validate password match
+    if (password !== confirmPassword) {
+      console.error('Passwords do not match.');
+      return;
+    }
+  
     console.log('Submitting registration:', { name, email, password, confirmPassword });
   
     try {
@@ -44,7 +63,7 @@ function RegisterPage() {
     } catch (error) {
       console.error('Error during registration:', error);
     }
-  };  
+  };
 
   return (
     <div className="account-container">
@@ -62,12 +81,12 @@ function RegisterPage() {
         <br />
         <label>
           Password:
-          <input type="password" className="input-field" onChange={(e) => setPassword(e.target.value)} />
+          <input type="password" minLength="8" className="input-field" onChange={(e) => setPassword(e.target.value)} />
         </label>
         <br />
         <label>
           Confirm Password:
-          <input type="password" className="input-field" onChange={(e) => setConfirmPassword(e.target.value)} />
+          <input type="password" minLength="8" className="input-field" onChange={(e) => setConfirmPassword(e.target.value)} />
         </label>
         <br />
         <button className="account-button" onClick={handleRegister}>
