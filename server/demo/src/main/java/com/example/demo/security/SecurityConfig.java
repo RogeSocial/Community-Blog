@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .addFilterAfter(new JwtVerifyFilter(userDetailsService), UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/account/**").permitAll()
-                        .requestMatchers("/api/blog").permitAll()
+                        .requestMatchers("/api/blog/**").permitAll()
 
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
