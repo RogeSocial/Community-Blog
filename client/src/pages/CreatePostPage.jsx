@@ -21,7 +21,7 @@ function CreatePostPage() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization:{token}, // Include the token in the headers
+                    Authorization:token, // Include the token in the headers
                 },
                 body: JSON.stringify(postData),
             });
